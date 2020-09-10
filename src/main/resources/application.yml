@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: cvs-to-database
+
+  batch:
+    initialize-schema: always
