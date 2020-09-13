@@ -1,6 +1,16 @@
 spring:
   application:
     name: cvs-to-database
+  jpa:
+    hibernate:
+      ddl-auto: none
 
   batch:
     initialize-schema: always
+    job:
+      enabled: false
+
+server:
+  port: 8080
+
+csvfile: sample-data/samplecsv20k.csv

@@ -1,7 +1,33 @@
 # cvs-to-database
-WIP, do not use this project!
+WIP Test Project, using Spring Batch. Clone on your own risk!
 
-### CVS Sample Data 
+## H2 Database
+Access H2 Console: http://localhost:8080/h2-console
+
+> JDBC URL: jdbc:h2:~/cvs-to-database  
+> Username: sa  
+> Password: <blank>
+
+## Time Tests
+### Test 1 (current commit)
+Step: [myStep] executed in 5m20s418ms
+Job: [SimpleJob: [name=myJob]] completed with the following parameters: [{time=1600013373557}] and the following status: [COMPLETED] in 5m20s487ms
+
+9231 entries into COMPANY
+9521 entries into EMPLOYEE
+9521 entries into EMPLOYEE_HASH
+
+> Notes: Now that we know it "works", we can think about improving the algorithm for insertion. We are currently wasting a lot of time inserting "one and one". :)
+
+### Test 1 (Rerun)
+Step: [myStep] executed in 1s171ms
+Job: [SimpleJob: [name=myJob]] completed with the following parameters: [{time=1600014284356}] and the following status: [COMPLETED] in 1s173ms
+
+(We did not insert anything, since we have already stored the data we received from the CSV file. Very Good.)
+
+----
+
+## CVS Sample Data 
 
 > /sample-data/samplecsv20k.csv
 
