@@ -1,4 +1,4 @@
-# cvs-to-database
+# Spring Batch Project
 WIP Test Project, using Spring Batch. Clone on your own risk!
 
 ## H2 Database
