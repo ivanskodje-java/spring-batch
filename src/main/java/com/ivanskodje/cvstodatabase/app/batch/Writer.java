@@ -35,7 +35,6 @@ public class Writer implements ItemWriter<CsvFileDto> {
 
             CompanyEntity companyEntity = companyRepository.findFirstByNameIgnoreCase(csvFile.getCompanyName());
             if (companyEntity == null) {
-                // Create company on the fly
                 companyEntity = new CompanyEntity();
                 companyEntity.setName(csvFile.getCompanyName());
                 companyRepository.save(companyEntity);
