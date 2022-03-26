@@ -11,7 +11,6 @@ public class Processor implements ItemProcessor<CsvFileDto, CsvFileDto> {
 
     @Override
     public CsvFileDto process(CsvFileDto csvFileDto) throws Exception {
-        // No need to do additional work here, just yet
         return csvFileDto;
     }
 }
