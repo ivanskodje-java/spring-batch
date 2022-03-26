@@ -21,7 +21,7 @@ public class BatchConfig {
 
     private static final String JOB_NAME = "myJob";
     private static final String STEP_NAME = "myStep";
-    private static final int CHUNK_SIZE = 100; // TODO: move to config
+    private static final int CHUNK_SIZE = 100; 
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
