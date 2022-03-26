@@ -22,7 +22,6 @@ public class Writer implements ItemWriter<CsvFileDto> {
     private final EmployeeRepository employeeRepository;
     private final EmployeeHashRepository employeeHashRepository;
 
-    // TODO: This works, but change this to do actual batch inserts, instead of one by one as it is doing right now. :)
     @Override
     public void write(List<? extends CsvFileDto> list) throws Exception {
         log.info("Writing: " + list.toString());
@@ -30,12 +29,10 @@ public class Writer implements ItemWriter<CsvFileDto> {
         int numberOfEmployeesCreated = 0;
         for (CsvFileDto csvFile : list) {
 
-            // If we have employee, skip
             if (employeeHashRepository.existsByHash(csvFile.hashCode())) {
                 return;
             }
 
-            // We do not have the employee stored. Let us see if we have the company before we even attempt to insert an employee.
             CompanyEntity companyEntity = companyRepository.findFirstByNameIgnoreCase(csvFile.getCompanyName());
             if (companyEntity == null) {
                 // Create company on the fly
@@ -45,7 +42,6 @@ public class Writer implements ItemWriter<CsvFileDto> {
                 numberOfCompaniesCreated++;
             }
 
-            // Now that we have a company, create employee
             EmployeeEntity employeeEntity = new EmployeeEntity();
             employeeEntity.setCompany(companyEntity);
             employeeEntity.setName(csvFile.getEmployeeName());
@@ -54,7 +50,6 @@ public class Writer implements ItemWriter<CsvFileDto> {
             employeeEntity.setLeave(csvFile.getLeave());
             employeeRepository.save(employeeEntity);
 
-            // Create hash to go along with the new employee
             employeeHashRepository.save(new EmployeeHashEntity(csvFile, employeeEntity));
 
             numberOfEmployeesCreated++;
